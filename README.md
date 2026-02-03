@@ -1,4 +1,4 @@
-🎯 Brain Tasks App
+🧠 Brain Tasks App
 Docker, Kubernetes & CI Pipeline Deployment on AWS
 
 This project demonstrates a production-style DevOps workflow for deploying a frontend application using Docker, Kubernetes, and AWS Cloud services.
