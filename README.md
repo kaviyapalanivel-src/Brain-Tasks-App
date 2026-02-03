@@ -199,6 +199,3 @@ It highlights best practices in **containerization**, **Kubernetes orchestration
 
 ```
 
-
-Ippo calm 😌 idhu **solid professional README** 💪
-```
