@@ -1,113 +1,179 @@
-# Brain Tasks App – Docker & Kubernetes Deployment on AWS EKS
+🎯 Brain Tasks App
+Docker, Kubernetes & CI Pipeline Deployment on AWS
 
-This project demonstrates the deployment of a containerized frontend application on AWS using Docker, Amazon ECR, and Amazon EKS.  
-The focus of this project is on containerization, Kubernetes deployment, and AWS infrastructure usage.
+This project demonstrates a production-style DevOps workflow for deploying a frontend application using Docker, Kubernetes, and AWS Cloud services.
+It also includes a Continuous Integration (CI) pipeline using AWS CodePipeline.
 
----
+📌 Project Objective
 
-## 🚀 Project Overview
+The goal of this project is to showcase:
 
-- React frontend application
-- Application built and served as static files
-- Docker image created and pushed to Amazon ECR
-- Kubernetes Deployment and Service created on Amazon EKS
-- Application exposed using Kubernetes LoadBalancer service
+Containerization of a frontend application
 
----
+Kubernetes deployment on AWS
 
-## 🛠️ Technology Stack
+Image management using Amazon ECR
 
-| Category | Tools / Services |
-|-------|----------------|
-| Frontend | React |
-| Containerization | Docker |
-| Container Registry | Amazon ECR |
-| Orchestration | Kubernetes |
-| Managed Kubernetes | Amazon EKS |
-| Cloud Platform | AWS |
-| Version Control | GitHub |
+Automated build validation using AWS CodePipeline
 
----
+Real-world DevOps practices
 
-## 🏗️ Architecture Overview
+🗂️ Project Features
 
-### High-Level Flow
+✨ Frontend application containerized with Docker
+📦 Docker images stored securely in Amazon ECR
+☸️ Application deployed on Amazon EKS
+🌐 Public access via Kubernetes LoadBalancer
+🔁 CI pipeline triggered on GitHub code push
 
-User  
-⬇  
-AWS Load Balancer (via Kubernetes Service)  
-⬇  
-Amazon EKS Cluster  
-⬇  
-Kubernetes Pods (NGINX serving React build)  
-⬇  
-Docker Image from Amazon ECR  
+🛠️ Technology Stack
+Layer	Tool / Service
+Frontend	React
+Containerization	Docker
+Container Registry	Amazon ECR
+Orchestration	Kubernetes
+Managed Kubernetes	Amazon EKS
+CI/CD	AWS CodePipeline, AWS CodeBuild
+Cloud Provider	AWS
+Version Control	GitHub
+🏗️ High-Level Architecture
+Developer
+   |
+   v
+GitHub Repository
+   |
+   v
+AWS CodePipeline (CI)
+   |
+   v
+Docker Image Build
+   |
+   v
+Amazon ECR
+   |
+   v
+Amazon EKS Cluster
+   |
+   v
+Kubernetes Pods (NGINX + React)
+   |
+   v
+AWS Load Balancer
+   |
+   v
+End Users
 
----
+📁 Repository Structure
+File / Folder	Description
+Dockerfile	Docker image definition
+buildspec.yml	CI build instructions
+deployment.yaml	Kubernetes Deployment manifest
+service.yaml	Kubernetes Service manifest
+dist/	React production build
+screenshots/	Output and verification screenshots
+README.md	Project documentation
+🐳 Docker Implementation
 
-### Architecture Components
+Uses NGINX Alpine as a lightweight base image
 
-| Component | Purpose |
-|--------|--------|
-| GitHub | Source code repository |
-| Docker | Containerization of application |
-| Amazon ECR | Stores Docker images |
-| Amazon EKS | Manages Kubernetes control plane |
-| EC2 Node Group | Runs application pods |
-| Kubernetes Service | Exposes application externally |
+Serves React build files from dist/
 
----
+Optimized for production usage
 
-## 📦 Docker Implementation
+Docker Workflow
 
-- Application build output (`dist/`) served using **NGINX**
-- Lightweight NGINX Alpine base image
-- Production-ready container
+Clone the GitHub repository
 
-### Docker Workflow
+Build Docker image locally / via CI
 
-1. Clone GitHub repository
-2. Build Docker image
-3. Push image to Amazon ECR
-4. Image pulled by Kubernetes during deployment
+Push Docker image to Amazon ECR
 
----
+Kubernetes pulls image from ECR during deployment
 
-## ☸️ Kubernetes Deployment
+☸️ Kubernetes Deployment (EKS)
+Deployment Configuration
 
-Kubernetes configuration includes:
+Defines desired number of pods
 
-### Deployment
-- Defines application pods
-- Uses Docker image from Amazon ECR
-- Ensures application availability
+Uses Docker image from Amazon ECR
 
-### Service
-- Type: `LoadBalancer`
-- Exposes application to the internet
-- Automatically provisions AWS Load Balancer
+Ensures high availability
 
----
+Service Configuration
 
-## 🔐 AWS & Security Setup
+Type: LoadBalancer
 
-- AWS IAM role attached to EC2 instance
-- Secure access to Amazon ECR
-- No hardcoded credentials
-- Network access controlled via Security Groups
+Exposes application to the internet
 
----
+Automatically provisions AWS Load Balancer
 
-## 🧪 Errors Faced & Fixes
+🔐 AWS & Security Configuration
 
-During the implementation, the following issues were encountered and resolved:
+IAM role attached to EC2 worker nodes
 
-- Docker build failure due to missing build directory
-- Incorrect Docker build context
-- EKS nodegroup creation failure due to VPC CNI issues
-- Kubernetes context misconfiguration
-- GitHub permission and authentication issues
+Secure ECR access without hardcoded credentials
 
-Each issue was resolved through troubleshooting AWS and Kubernetes configurations.
+Network access controlled using Security Groups
 
----
+Kubernetes resources isolated within VPC
+
+🔄 Continuous Integration with AWS CodePipeline
+
+This project includes a CI pipeline to automatically validate builds when code is pushed to GitHub.
+
+CI Tools Used
+Purpose	Service
+Source	GitHub
+Pipeline Orchestration	AWS CodePipeline
+Build Execution	AWS CodeBuild
+Build Instructions	buildspec.yml
+CI Pipeline Stages
+
+Source Stage
+
+GitHub connected via GitHub App
+
+Monitors main branch
+
+Triggers automatically on every push
+
+Build Stage
+
+Runs on AWS CodeBuild
+
+Installs dependencies
+
+Executes application build
+
+Logs stored in CloudWatch
+
+buildspec.yml (CI Build File)
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build
+
+🧪 Issues Faced & Resolutions
+Issue	Resolution
+Docker build failed	Corrected build context and paths
+Missing build files	Generated React production build
+GitHub push permission error	Used correct fork & authentication
+CodePipeline build failure	Fixed Node.js version and commands
+Kubernetes access issue	Updated kubeconfig and context
+✅ Final Outcome
+
+✔️ Application successfully deployed on AWS EKS
+✔️ Docker image managed via Amazon ECR
+✔️ CI pipeline validates every code change
+✔️ End-to-end DevOps workflow implemented
+
+📎 Conclusion
+
+This project demonstrates a real-time DevOps implementation using modern cloud-native tools.
+It highlights best practices in containerization, Kubernetes orchestration, and CI automation on AWS.
