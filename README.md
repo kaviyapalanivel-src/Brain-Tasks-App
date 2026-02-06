@@ -196,6 +196,3 @@ phases:
 
 This project showcases a **real-world DevOps pipeline** using cloud-native technologies.
 It highlights best practices in **containerization**, **Kubernetes orchestration**, and **CI automation** on AWS.
-
-```
-
