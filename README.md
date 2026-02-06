@@ -115,7 +115,7 @@ End Users
 
 ---
 
-## 🔐 AWS Security Configuration
+##  AWS Security Configuration
 
 - IAM role attached to EKS worker nodes
 - Secure ECR access without hardcoded credentials
@@ -124,7 +124,7 @@ End Users
 
 ---
 
-## 🔄 Continuous Integration with AWS CodePipeline
+##  Continuous Integration with AWS CodePipeline
 
 This project includes a **CI pipeline** to validate application builds on every GitHub push.
 
@@ -154,7 +154,7 @@ This project includes a **CI pipeline** to validate application builds on every 
 
 ---
 
-## 🧾 buildspec.yml
+##  buildspec.yml
 
 ```yaml
 version: 0.2
